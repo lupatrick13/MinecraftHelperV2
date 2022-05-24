@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 import {APP_CONFIG} from '../environments/environment';
@@ -11,9 +12,12 @@ import {ElectronService} from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  showFiller = false;
   constructor(
       private electronService: ElectronService,
-      private translate: TranslateService) {
+      private translate: TranslateService,
+      private router: Router,
+  ) {
     this.translate.setDefaultLang('en');
     console.log('APP_CONFIG', APP_CONFIG);
 

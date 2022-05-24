@@ -1,49 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
-html,
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+@font-face {
+    font-family: mc-font;
+    src: url(assets/mc-font.woff);
 }
 
-/* CAN (MUST) BE REMOVED ! Sample Global style */
-.container {
+.icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 28px;
+    height: 28px;
+    padding: 10px 1px 1px 1px;
+}
 
-  -webkit-background-size: cover;
-  align-items: center;
-  background-size: cover;
-  background: url(./assets/background.jpg) no-repeat center fixed;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-
-  .title {
-    color: white;
-    margin: 0;
-    padding: 50px 20px;
-  }
-
-  a {
-    background: #ed3330;
-    border-radius: 5px;
-    border: none;
-    color: #fff !important;
-    display: inline-block;
-    padding: 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.4s ease 0s;
-
-    &:hover {
-      -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-      -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-      background: #fff;
-      box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-      color: #ed3330 !important;
-      letter-spacing: 1px;
-      transition: all 0.4s ease 0s;
-    }
-  }
+* {
+    font-family: mc-font;
 }

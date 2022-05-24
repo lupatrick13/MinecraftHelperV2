@@ -1,1 +1,14 @@
 :host {}
+
+.route-button {
+    padding: 0 0 0 0;
+    border: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 0 0 0 0;
+}
+
+.route-button[disabled] {
+    background: #cccccc;
+    color: black
+}

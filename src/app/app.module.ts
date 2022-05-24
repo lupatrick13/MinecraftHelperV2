@@ -1,7 +1,11 @@
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // NG Translate
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -20,14 +24,25 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule, CoreModule, SharedModule,
-    HomeModule, DetailModule, AppRoutingModule, TranslateModule.forRoot({
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    CoreModule,
+    SharedModule,
+    HomeModule,
+    DetailModule,
+    AppRoutingModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

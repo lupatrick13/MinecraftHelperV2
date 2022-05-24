@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<mat-drawer-container fullscreen>
+    <mat-drawer #drawer class="sidenav" mode="side" disableClose="True" opened="True">
+        <a class="route-button" mat-button href="/home" [disabled]="router.url == '/home'">
+            <object class="icon" data="../assets/icons/mc_home.png"></object>
+            <div>Home</div>
+        </a>
+        <br>
+        <a class="route-button" mat-button href="/detail" [disabled]="router.url == '/detail'">
+            <object class="icon" data="../assets/icons/mc_spyglass.png"></object>
+            <div>Details</div>
+        </a>
+    </mat-drawer>
+    <router-outlet></router-outlet>
+</mat-drawer-container>
