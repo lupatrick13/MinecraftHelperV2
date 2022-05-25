@@ -1,1 +1,10 @@
-<p>home page!</p>
+<button (click)="refresh$.next(null)">refresh</button>
+
+
+<div class="recipe-container">
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile class="recipe-big-box" *ngFor="let recipe of recipes$|async; let id=index">
+      {{recipe.name}} {{id}}
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

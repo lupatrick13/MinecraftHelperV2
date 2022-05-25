@@ -1,0 +1,9 @@
+<form class="recipe-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input #name matInput placeholder="ingot">
+  </mat-form-field>
+
+
+  <button mat-raised-button (click)="add(name.value)">Add</button>
+</form>

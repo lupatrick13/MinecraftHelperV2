@@ -10,6 +10,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+import {AddRecipeComponent} from './add-recipe/add-recipe.component';
+import {AddRecipeModule} from './add-recipe/add-recipe.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
@@ -24,6 +26,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AddRecipeModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
