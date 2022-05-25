@@ -1,4 +1,8 @@
 import {TestBed, waitForAsync} from '@angular/core/testing';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -11,7 +15,14 @@ describe('AppComponent', () => {
         .configureTestingModule({
           declarations: [AppComponent],
           providers: [ElectronService],
-          imports: [RouterTestingModule, TranslateModule.forRoot()]
+          imports: [
+            NoopAnimationsModule,
+            RouterTestingModule,
+            MatButtonModule,
+            MatIconModule,
+            MatSidenavModule,
+            TranslateModule.forRoot(),
+          ],
         })
         .compileComponents();
   }));

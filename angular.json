@@ -30,7 +30,11 @@
             "polyfills": "src/polyfills.ts",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets"
+              {
+                "input": "src/assets",
+                "output": "/assets/",
+                "glob": "*/**"
+              }
             ],
             "styles": [
               "src/styles.scss",

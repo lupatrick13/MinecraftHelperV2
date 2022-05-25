@@ -17,6 +17,13 @@
       "filter": [
         "**/*"
       ]
+    },
+    {
+      "from": "./src/assets",
+      "to": "assets",
+      "filter": [
+        "**/*"
+      ]
     }
   ],
   "win": {

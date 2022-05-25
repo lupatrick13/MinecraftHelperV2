@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(
       private electronService: ElectronService,
       private translate: TranslateService,
-      private router: Router,
+      public router: Router,
   ) {
     this.translate.setDefaultLang('en');
     console.log('APP_CONFIG', APP_CONFIG);
