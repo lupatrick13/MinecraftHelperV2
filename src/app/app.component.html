@@ -1,5 +1,11 @@
 <mat-drawer-container fullscreen>
-  <mat-drawer #drawer class="sidenav" mode="side" disableClose="True" opened="True">
+  <mat-toolbar>
+    <button (click)="routes.opened=!routes.opened" mat-button> X </button>
+    <span class="toolbar-spacer"></span>
+    <button (click)="recipes.opened=!recipes.opened" mat-button> X </button>
+  </mat-toolbar>
+
+  <mat-drawer #routes mode="side" opened="True">
     <a class="route-button" mat-button routerLink="/home" [disabled]="router.url == 'home'">
       <object class="icon" data="./assets/icons/mc_home.png"></object>
       <div>Home</div>
@@ -15,5 +21,17 @@
       <div>Add</div>
     </a>
   </mat-drawer>
+
+  <mat-drawer #recipes mode="side" opened="True" position="end">
+    <div class="recipe-container">
+      <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-tile class="recipe-big-box disable-text-selection" *ngFor="let recipe of recipes$|async; let id=index"
+          routerLink="/detail/{{id}}">
+          {{recipe.name}} {{id}}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-drawer>
+
   <router-outlet></router-outlet>
 </mat-drawer-container>

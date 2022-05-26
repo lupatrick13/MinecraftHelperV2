@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {startWith, Subject, switchMap} from 'rxjs';
 
 import {APP_CONFIG} from '../environments/environment';
 
 import {ElectronService} from './core/services';
+import {RecipeService} from './recipe/recipe_service';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,16 @@ import {ElectronService} from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  showFiller = false;
+  refresh$ = new Subject<void>();
+  recipes$ = this.refresh$.asObservable().pipe(
+      startWith(null),
+      switchMap(() => this.recipeService.listRecipes()),
+  )
+
   constructor(
       private electronService: ElectronService,
-      private translate: TranslateService,
-      public router: Router,
-  ) {
+      private translate: TranslateService, public router: Router,
+      private readonly recipeService: RecipeService) {
     this.translate.setDefaultLang('en');
     console.log('APP_CONFIG', APP_CONFIG);
 

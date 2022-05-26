@@ -12,3 +12,13 @@
     background: #cccccc;
     color: black
 }
+
+.recipe-container {
+    border: solid 1px #ccc;
+    float: right;
+    height: 100%;
+}
+
+.toolbar-spacer { 
+    flex: 1 1 auto;
+}

@@ -28,4 +28,8 @@ export class RecipeService {
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
   }
+
+  getRecipe(id: number) {
+    return this.recipes[id];
+  }
 }
