@@ -22,14 +22,24 @@ export class RecipeService {
   ];
 
   listRecipes(filter?: string): Observable<Recipe[]> {
+    // Copy array so the array is readonly. Array is only modifiable by the
+    // functions.
     return of(this.recipes);
   }
+
+  getRecipe(recipeId: number): Observable<Recipe> {
+    return of(this.recipes[recipeId]);
+  };
 
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
   }
 
-  getRecipe(id: number) {
-    return this.recipes[id];
+  addRecipePath(
+      targetRecipe: Recipe, recipePath: number,
+      recipesToAdd: Map<Recipe, number>) {
+    recipesToAdd.forEach((amount, recipe) => {
+      targetRecipe.addRecipeToPath(recipePath, recipe, amount);
+    });
   }
 }

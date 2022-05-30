@@ -14,16 +14,14 @@ import {RecipeService} from './recipe/recipe_service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  refresh$ = new Subject<void>();
-  recipes$ = this.refresh$.asObservable().pipe(
-      startWith(null),
-      switchMap(() => this.recipeService.listRecipes()),
-  )
+  recipes$ = this.recipeService.listRecipes();
 
   constructor(
       private electronService: ElectronService,
-      private translate: TranslateService, public router: Router,
-      private readonly recipeService: RecipeService) {
+      private translate: TranslateService,
+      public router: Router,
+      private readonly recipeService: RecipeService,
+  ) {
     this.translate.setDefaultLang('en');
     console.log('APP_CONFIG', APP_CONFIG);
 

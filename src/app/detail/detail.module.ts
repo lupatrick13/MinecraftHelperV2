@@ -1,3 +1,4 @@
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
@@ -10,6 +11,7 @@ import {DetailComponent} from './detail.component';
   declarations: [DetailComponent],
   imports: [
     CommonModule,
+    DragDropModule,
     SharedModule,
     RouterModule,
   ],

@@ -5,15 +5,10 @@
     <button (click)="recipes.opened=!recipes.opened" mat-button> X </button>
   </mat-toolbar>
 
-  <mat-drawer #routes mode="side" opened="True">
+  <mat-drawer class="side-nav" #routes mode="side" opened="True">
     <a class="route-button" mat-button routerLink="/home" [disabled]="router.url == 'home'">
       <object class="icon" data="./assets/icons/mc_home.png"></object>
       <div>Home</div>
-    </a>
-    <br>
-    <a class="route-button" mat-button routerLink="/detail" [disabled]="router.url == 'detail'">
-      <object class="icon" data="./assets/icons/mc_spyglass.png"></object>
-      <div>Details</div>
     </a>
     <br>
     <a class="route-button" mat-button routerLink="/add-recipe" [disabled]="router.url == 'add-recipe'">
@@ -22,15 +17,8 @@
     </a>
   </mat-drawer>
 
-  <mat-drawer #recipes mode="side" opened="True" position="end">
-    <div class="recipe-container">
-      <mat-grid-list cols="4" rowHeight="100px">
-        <mat-grid-tile class="recipe-big-box disable-text-selection" *ngFor="let recipe of recipes$|async; let id=index"
-          routerLink="/detail/{{id}}">
-          {{recipe.name}} {{id}}
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
+  <mat-drawer class="side-nav" #recipes mode="side" opened="True" position="end">
+    <drag-drop-grid-recipe></drag-drop-grid-recipe>
   </mat-drawer>
 
   <router-outlet></router-outlet>

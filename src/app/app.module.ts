@@ -1,3 +1,4 @@
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -12,12 +13,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-import {AddRecipeComponent} from './add-recipe/add-recipe.component';
 import {AddRecipeModule} from './add-recipe/add-recipe.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {DetailModule} from './detail/detail.module';
+import {DragDropGridModule} from './drag-drop-grid/drag-drop-grid.module';
 import {HomeModule} from './home/home.module';
 import {SharedModule} from './shared/shared.module';
 
@@ -34,6 +35,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
     FormsModule,
     HttpClientModule,
     CoreModule,
+    DragDropModule,
     SharedModule,
     HomeModule,
     DetailModule,
@@ -43,6 +45,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
+    DragDropGridModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,0 +1,9 @@
+<div class="recipe-container">
+  <mat-grid-list cols="4" rowHeight="100px" cdkDropList [cdkDropListData]="recipes$|async"
+    (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['pathList']">
+    <mat-grid-tile cdkDrag class="recipe-big-box disable-text-selection"
+      *ngFor="let recipe of recipes$|async; let id=index" routerLink="/detail/{{id}}">
+      {{recipe.name}} {{id}}
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,32 +1,36 @@
-import {ifError} from 'assert';
+import {Observable, of} from 'rxjs';
 
 export class Recipe {
-  // Key is recipe ID stored in service. Value is amount needed.
-  private readonly _recipePaths: Map<number, number>[] = [];
-
+  private readonly recipePaths: Map<Recipe, number>[] = [];
   constructor(
       public name: string,
-      public craft_amt: number,
+      public craftAmount: number,
       public craftingMedium?: string,
   ) {}
 
-  addComponent(recipePath: number, recipeId: number, amtNeeded: number): void {
-    if (recipePath >= this._recipePaths.length) {
-      this._recipePaths.push(new Map<number, number>());
+  addRecipeToPath(pathId: number, recipe: Recipe, amountNeeded: number): void {
+    if (!this.pathIdExists(pathId)) {
+      this.recipePaths.push(new Map<Recipe, number>());
+      pathId = this.recipePaths.length - 1;
     }
 
-    this._recipePaths[recipePath].set(recipeId, amtNeeded);
+    this.recipePaths[pathId].set(recipe, amountNeeded);
   }
 
-  getRecipePath(recipePath: number): Map<number, number>|undefined {
-    if (recipePath >= this._recipePaths.length) {
-      return undefined;
+  getRecipePath(pathId) {
+    if (!this.pathIdExists(pathId)) {
+      this.recipePaths.push(new Map<Recipe, number>());
+      pathId = this.recipePaths.length - 1;
     }
 
-    return this._recipePaths[recipePath];
+    return of(this.recipePaths[0])
+  }
+  listRecipePaths(): Observable<Map<Recipe, number>[]> {
+    return of(this.recipePaths);
   }
 
-  isBaseIngredient(): boolean {
-    return this._recipePaths.length === 0;
+
+  private pathIdExists(pathId: number): boolean {
+    return this.recipePaths.length < pathId;
   }
 }

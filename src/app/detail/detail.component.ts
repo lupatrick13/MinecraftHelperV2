@@ -1,6 +1,7 @@
+import {CdkDragDrop, copyArrayItem, transferArrayItem} from '@angular/cdk/drag-drop';
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {map, Observable} from 'rxjs';
+import {combineLatest, map, Observable, switchMap, tap} from 'rxjs';
 
 import {Recipe} from '../recipe/recipe';
 import {RecipeService} from '../recipe/recipe_service';
@@ -11,9 +12,32 @@ import {RecipeService} from '../recipe/recipe_service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent {
-  readonly recipe: Observable<Recipe> = this.route.paramMap.pipe(
-      map((value) => this.recipeService.getRecipe(Number(value.get('id')))))
+  readonly id$: Observable<number> = this.route.paramMap.pipe(
+      tap(() => this.recipePath = [new Recipe('hjey', 1)]),
+      map((value) => Number(value.get('id'))),
+  );
+  readonly recipe$: Observable<Recipe> = this.id$.pipe(
+      switchMap((value: number) => this.recipeService.getRecipe(value)),
+  )
+
+  readonly allRecipes$: Observable<Recipe[]> = this.id$.pipe(
+      switchMap(() => this.recipeService.listRecipes()),
+  );
+
+  readonly merged$ = combineLatest([this.id$, this.recipe$]);
+
+  recipePath: Recipe[] = [];
   constructor(
       private readonly route: ActivatedRoute,
-      private readonly recipeService: RecipeService) {}
+      readonly recipeService: RecipeService) {}
+
+  drop(event: CdkDragDrop<Recipe[]>) {
+    if (event.previousContainer === event.container) return;
+    copyArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+    );
+  }
 }
