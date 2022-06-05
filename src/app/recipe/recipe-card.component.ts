@@ -7,11 +7,11 @@ import {Recipe} from '../recipe/recipe';
 import {RecipeService} from '../recipe/recipe_service';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  selector: 'app-recipe-card',
+  templateUrl: './recipe-card.component.html',
+  styleUrls: ['./recipe-card.component.scss']
 })
-export class DetailComponent {
+export class RecipeCardComponent {
   readonly id$: Observable<number> = this.route.paramMap.pipe(
       map((value) => Number(value.get('id'))),
   );

@@ -19,10 +19,12 @@
     height: 100%;
 }
 
-.toolbar-spacer { 
-    flex: 1 1 auto;
+.toolbar {
+    .spacer { 
+        flex: 1 1 auto;
+    }
+    .searchbar {
+        width: 75%;
+    }
 }
 
-.cdk-drag:not(.cdk-drag-preview) {
-    transform: none !important;
-}

@@ -20,6 +20,7 @@ import {CoreModule} from './core/core.module';
 import {DetailModule} from './detail/detail.module';
 import {DragDropGridModule} from './drag-drop-grid/drag-drop-grid.module';
 import {HomeModule} from './home/home.module';
+import {SearchbarModule} from './searchbar/searchbar.module';
 import {SharedModule} from './shared/shared.module';
 
 // AoT requires an exported function for factories
@@ -46,6 +47,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>
     MatIconModule,
     MatGridListModule,
     DragDropGridModule,
+    SearchbarModule,
+
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,0 +1,17 @@
+<mat-form-field class="field"
+                appearance="fill">
+  <mat-label>Recipes Chosen</mat-label>
+  <input type="text"
+         placeholder="Pick recipe..."
+         #recipeInput
+         matInput
+         [formControl]="recipeCtrl"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete"
+                    [autoActiveFirstOption]="true">
+    <mat-option *ngFor="let recipe of filteredRecipes | async; let id=index"
+                routerLink="/detail/{{id}}">
+      {{recipe.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

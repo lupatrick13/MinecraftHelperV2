@@ -1,14 +1,20 @@
-<p>Details page works!</p>
-
-<p>{{(recipe$|async).name}}</p>
-
-<p>{{(merged$|async)[1].name}}</p>
-
-
-<div class="recipe-container">
-  <div cdkDropList [id]="'pathList'" [cdkDropListData]="recipePath" class="recipe-list"
-    (cdkDropListDropped)="drop($event)">
-    Add
-  </div>
-  <div class="recipe-box" *ngFor="let path of recipePath">{{path.name}}</div>
-</div>
+<h1>{{(recipe$|async).name}}</h1>
+<app-recipe-card></app-recipe-card>
+<mat-tab-group>
+  <mat-tab class="recipe-container"
+           *ngFor="let recipePath of recipePaths$|async; let index=index"
+           [label]="index.toString()">
+    <div (cdkDropListDropped)="drop($event)"
+         (cdkDropListDropped)="userDragHover = false"
+         (cdkDropListEntered)="userDragHover = true"
+         (cdkDropListExited)="userDragHover = false"
+         [cdkDropListData]=""
+         [id]="'pathList'"
+         [ngClass]="{'drag-hover': userDragHover}"
+         class="recipe-list no-placeholder"
+         cdkDropList>
+    </div>
+    <div class="recipe-box"
+         *ngFor="let recipe of (recipePath|keyvalue)">{{recipe.key.name}} {{recipe.value}}</div>
+  </mat-tab>
+</mat-tab-group>

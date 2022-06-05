@@ -1,23 +1,44 @@
 <mat-drawer-container fullscreen>
-  <mat-toolbar>
-    <button (click)="routes.opened=!routes.opened" mat-button> X </button>
-    <span class="toolbar-spacer"></span>
-    <button (click)="recipes.opened=!recipes.opened" mat-button> X </button>
+  <mat-toolbar class="toolbar">
+    <button (click)="routes.opened=!routes.opened"
+            mat-button> X </button>
+    <span class="spacer"></span>
+    <span class="searchbar">
+      <app-searchbar></app-searchbar>
+    </span>
+    <span class="spacer"></span>
+    <button (click)="recipes.opened=!recipes.opened"
+            mat-button> X </button>
   </mat-toolbar>
 
-  <mat-drawer class="side-nav" #routes mode="side" opened="True">
-    <a class="route-button" mat-button routerLink="/home" [disabled]="router.url == 'home'">
-      <object class="icon" data="./assets/icons/mc_home.png"></object>
+  <mat-drawer #routes
+              mode="side"
+              opened="True"
+              class="side-nav">
+    <a [disabled]="router.url == 'home'"
+       mat-button
+       routerLink="/home"
+       class="route-button">
+      <object class="icon"
+              data="./assets/icons/mc_home.png"></object>
       <div>Home</div>
     </a>
     <br>
-    <a class="route-button" mat-button routerLink="/add-recipe" [disabled]="router.url == 'add-recipe'">
-      <object class="icon" data="./assets/icons/mc_spyglass.png"></object>
+    <a [disabled]="router.url == 'add-recipe'"
+       mat-button
+       routerLink="/add-recipe"
+       class="route-button">
+      <object class="icon"
+              data="./assets/icons/mc_spyglass.png"></object>
       <div>Add</div>
     </a>
   </mat-drawer>
 
-  <mat-drawer class="side-nav" #recipes mode="side" opened="True" position="end">
+  <mat-drawer #recipes
+              mode="side"
+              opened="True"
+              position="end"
+              class="side-nav">
     <drag-drop-grid-recipe></drag-drop-grid-recipe>
   </mat-drawer>
 

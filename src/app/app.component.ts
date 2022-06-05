@@ -22,6 +22,7 @@ export class AppComponent {
       public router: Router,
       private readonly recipeService: RecipeService,
   ) {
+    this.recipeService.initializeMockRecipes();
     this.translate.setDefaultLang('en');
     console.log('APP_CONFIG', APP_CONFIG);
 

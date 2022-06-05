@@ -14,6 +14,6 @@ export class HomeComponent {
   recipes$ = this.refresh$.asObservable().pipe(
       startWith(null),
       switchMap(() => this.recipeService.listRecipes()),
-  )
+  );
   constructor(private readonly recipeService: RecipeService) {}
 }

@@ -17,7 +17,7 @@ export class Recipe {
     this.recipePaths[pathId].set(recipe, amountNeeded);
   }
 
-  getRecipePath(pathId) {
+  getRecipePath(pathId: number) {
     if (!this.pathIdExists(pathId)) {
       this.recipePaths.push(new Map<Recipe, number>());
       pathId = this.recipePaths.length - 1;
@@ -25,12 +25,13 @@ export class Recipe {
 
     return of(this.recipePaths[0])
   }
+
   listRecipePaths(): Observable<Map<Recipe, number>[]> {
     return of(this.recipePaths);
   }
 
 
   private pathIdExists(pathId: number): boolean {
-    return this.recipePaths.length < pathId;
+    return pathId < this.recipePaths.length;
   }
 }

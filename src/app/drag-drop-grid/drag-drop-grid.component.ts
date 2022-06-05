@@ -1,4 +1,3 @@
-import {CdkDragDrop, copyArrayItem} from '@angular/cdk/drag-drop';
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
 
@@ -14,14 +13,4 @@ export class DragDropGridComponent {
   readonly recipes$: Observable<Recipe[]> = this.recipeService.listRecipes();
 
   constructor(private recipeService: RecipeService) {}
-
-  drop(event: CdkDragDrop<Recipe[]>) {
-    if (event.previousContainer === event.container) return;
-    copyArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-    );
-  }
 }
